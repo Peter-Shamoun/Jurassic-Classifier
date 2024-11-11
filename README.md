@@ -7,7 +7,7 @@ A deep learning web application that identifies dinosaur species from images usi
 - Upload images via drag & drop or file selection
 - Real-time image preview
 - Identifies 15 different dinosaur species
-- Modern, responsive UI with Jurassic theme
+- Modern, responsive UI with a Jurassic theme
 - Ensemble model prediction for improved accuracy
 
 ## 🦕 Supported Dinosaur Species
