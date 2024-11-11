@@ -124,5 +124,5 @@ def create_model(input_shape):
 - Smooth transitions and hover effects
 
 ---
-![Dinosaur Image](dino.jpg)
+![Dinosaur Image](ui.png)
 Made with 💚 by [Peter Shamoun]
