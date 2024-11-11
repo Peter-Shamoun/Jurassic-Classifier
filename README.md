@@ -51,6 +51,7 @@ A deep learning web application that identifies dinosaur species from images usi
 2. Install required packages:
     ```bash
     pip install flask tensorflow pandas numpy pillow
+    pip install -r requirements.txt
     ```
 
 3. Download the model files:
