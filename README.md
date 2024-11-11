@@ -56,7 +56,7 @@ A deep learning web application that identifies dinosaur species from images usi
 
 3. Download the model files:
    - Ensure you have the `ensemble_model_0.h5`, `ensemble_model_1.h5`, and `ensemble_model_2.h5` files in your project directory.
-   - Due to the size of the file, please contact petershamoun80@gmail.com to get access to dino_pics.pkl. However, the app can be run without the pkl and just with app.py, dino.py, and the ensemble models. The pkl is just used fro the model creation
+   - Due to the size of the file, please contact petershamoun80@gmail.com to get access to dino_pics.pkl. However, the app can be run without the pkl and just with app.py, dino.py, and the ensemble models. The pkl is just used for the model creation
 ## 🚀 Running the Application
 
 1. Start the Flask server:
