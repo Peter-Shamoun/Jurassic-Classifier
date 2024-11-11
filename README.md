@@ -114,7 +114,7 @@ def create_model(input_shape):
     model.add(Dropout(0.5))
     model.add(Dense(15, activation='softmax'))
     return model
-
+```
 ## 🎨 UI Features
 
 - Frosted glass card design
@@ -124,4 +124,5 @@ def create_model(input_shape):
 - Smooth transitions and hover effects
 
 ---
+![Dinosaur Image](dino.jpg)
 Made with 💚 by [Peter Shamoun]
