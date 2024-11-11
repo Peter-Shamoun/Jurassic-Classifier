@@ -54,7 +54,7 @@ A deep learning web application that identifies dinosaur species from images usi
     ```
 
 3. Download the model files:
-   - Ensure you have the `ensemble_model_0.h5`, `ensemble_model_1.h5`, and `ensemble_model_2.h5` files in your project directory
+   - Ensure you have the `ensemble_model_0.h5`, `ensemble_model_1.h5`, and `ensemble_model_2.h5` files in your project directory.
 
 ## 🚀 Running the Application
 
@@ -69,48 +69,51 @@ A deep learning web application that identifies dinosaur species from images usi
     ```
 
 ## 📁 Project Structure
-jurassic-classifier/
-├── app.py # Flask application
-├── dino.py # Model prediction logic
-├── model.py # Model training code
-├── static/
-│ ├── style.css # Styling
-│ ├── script.js # Frontend logic
-│ └── dino-bg.jpg # Background image
-├── templates/
-│ └── index.html # Main page
-└── ensemble_model_.h5 # Trained models
+
+jurassic-classifier/ 
+├── app.py # Flask application 
+├── dino.py # Model prediction logic 
+├── model.py # Model training code 
+├── get_pkl.py # code for getting the dino pkl based off pics, redundant given pkl.  
+├── dino_pics.pkl All normalized and standardized dino images
+├── static/ │ 
+    ├── style.css # Styling │ 
+    ├── script.js # Frontend logic │
+    └── dino-bg.jpg # Background image 
+├── templates/ │
+    └── index.html # Main page 
+└── ensemble_model_1.h5 # Trained models
+└── ensemble_model_2.h5 # Trained models
+└── ensemble_model_3.h5 # Trained models
 
 
 ## 🤖 Model Architecture
 
 The project uses an ensemble of 3 CNN models with the following architecture:
 
-
-python
+```python
 def create_model(input_shape):
-model = Sequential()
-model.add(Conv2D(filters=128, kernel_size=(11,11), strides=(8,8), activation='relu', input_shape=input_shape))
-model.add(BatchNormalization())
-model.add(MaxPooling2D((2, 2)))
-model.add(Conv2D(filters=256, kernel_size=(5,5), strides=(1,1), activation='relu', padding="same"))
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size=(3,3)))
-model.add(Conv2D(filters=256, kernel_size=(3,3), strides=(1,1), activation='relu', padding="same"))
-model.add(BatchNormalization())
-model.add(Conv2D(filters=256, kernel_size=(1,1), strides=(1,1), activation='relu', padding="same"))
-model.add(BatchNormalization())
-model.add(Conv2D(filters=256, kernel_size=(1,1), strides=(1,1), activation='relu', padding="same"))
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size=(2,2)))
-model.add(Flatten())
-model.add(Dense(1024,activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(1024,activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(15, activation='softmax'))
-return model
-
+    model = Sequential()
+    model.add(Conv2D(filters=128, kernel_size=(11,11), strides=(8,8), activation='relu', input_shape=input_shape))
+    model.add(BatchNormalization())
+    model.add(MaxPooling2D((2, 2)))
+    model.add(Conv2D(filters=256, kernel_size=(5,5), strides=(1,1), activation='relu', padding="same"))
+    model.add(BatchNormalization())
+    model.add(MaxPooling2D(pool_size=(3,3)))
+    model.add(Conv2D(filters=256, kernel_size=(3,3), strides=(1,1), activation='relu', padding="same"))
+    model.add(BatchNormalization())
+    model.add(Conv2D(filters=256, kernel_size=(1,1), strides=(1,1), activation='relu', padding="same"))
+    model.add(BatchNormalization())
+    model.add(Conv2D(filters=256, kernel_size=(1,1), strides=(1,1), activation='relu', padding="same"))
+    model.add(BatchNormalization())
+    model.add(MaxPooling2D(pool_size=(2,2)))
+    model.add(Flatten())
+    model.add(Dense(1024, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(1024, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(15, activation='softmax'))
+    return model
 
 ## 🎨 UI Features
 
@@ -119,7 +122,6 @@ return model
 - Responsive layout
 - Interactive drag & drop zone
 - Smooth transitions and hover effects
-
 
 ---
 Made with 💚 by [Peter Shamoun]
