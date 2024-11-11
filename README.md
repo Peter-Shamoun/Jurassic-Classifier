@@ -125,4 +125,4 @@ def create_model(input_shape):
 
 ---
 ![Dinosaur Image](ui.png)
-Made with 💚 by [Peter Shamoun]
+Made with 💚 by Peter Shamoun
