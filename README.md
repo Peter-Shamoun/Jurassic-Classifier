@@ -70,21 +70,22 @@ A deep learning web application that identifies dinosaur species from images usi
 
 ## 📁 Project Structure
 
-jurassic-classifier/ 
-├── app.py # Flask application 
-├── dino.py # Model prediction logic 
-├── model.py # Model training code 
-├── get_pkl.py # code for getting the dino pkl based off pics, redundant given pkl.  
-├── dino_pics.pkl All normalized and standardized dino images
-├── static/ │ 
-    ├── style.css # Styling │ 
-    ├── script.js # Frontend logic │
-    └── dino-bg.jpg # Background image 
-├── templates/ │
-    └── index.html # Main page 
-└── ensemble_model_1.h5 # Trained models
-└── ensemble_model_2.h5 # Trained models
-└── ensemble_model_3.h5 # Trained models
+jurassic-classifier/
+- app.py  # Flask application
+- dino.py  # Model prediction logic
+- model.py  # Model training code
+- get_pkl.py  # Code for getting the dino pkl based on pics, redundant given pkl.
+- dino_pics.pkl  # All normalized and standardized dino images
+- static/
+  - style.css  # Styling
+  - script.js  # Frontend logic
+  - dino-bg.jpg  # Background image
+- templates/
+  - index.html  # Main page
+- ensemble_model_1.h5  # Trained model
+- ensemble_model_2.h5  # Trained model
+- ensemble_model_3.h5  # Trained model
+
 
 
 ## 🤖 Model Architecture
