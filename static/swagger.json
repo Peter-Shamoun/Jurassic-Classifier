@@ -1,0 +1,214 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Jurassic Classifier API",
+    "description": "API for identifying dinosaur species from images using deep learning",
+    "version": "1.0.0",
+    "contact": {
+      "email": "petershamoun80@gmail.com"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "prediction",
+      "description": "Dinosaur prediction operations"
+    },
+    {
+      "name": "model",
+      "description": "Model information"
+    }
+  ],
+  "paths": {
+    "/predict": {
+      "post": {
+        "tags": [
+          "prediction"
+        ],
+        "summary": "Predict dinosaur species from an image",
+        "description": "Upload an image and receive dinosaur species prediction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "image"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "description": "Base64 encoded image with data URL prefix (e.g., data:image/jpeg;base64,...)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful prediction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "prediction": {
+                      "type": "string",
+                      "description": "Predicted dinosaur species",
+                      "example": "Tyrannosaurus Rex"
+                    },
+                    "confidence": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Prediction confidence (0.0-1.0)",
+                      "example": 0.92
+                    },
+                    "top_predictions": {
+                      "type": "array",
+                      "description": "Top 3 predictions with confidence scores",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "species": {
+                            "type": "string",
+                            "example": "Velociraptor"
+                          },
+                          "confidence": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 0.05
+                          }
+                        }
+                      }
+                    },
+                    "model_version": {
+                      "type": "string",
+                      "example": "1.0.0"
+                    },
+                    "processing_time": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Time taken to process the prediction in seconds",
+                      "example": 1.23
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "No image data provided"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Server error during prediction"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/model-info": {
+      "get": {
+        "tags": [
+          "model"
+        ],
+        "summary": "Get model information",
+        "description": "Retrieve metadata about the model",
+        "responses": {
+          "200": {
+            "description": "Model information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "example": "1.0.0"
+                    },
+                    "classes": {
+                      "type": "integer",
+                      "example": 15
+                    },
+                    "class_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": ["Tyrannosaurus Rex", "Gallimimus", "Parasaurolophus"]
+                    },
+                    "input_shape": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "example": [256, 256, 3]
+                    },
+                    "ensemble_size": {
+                      "type": "integer",
+                      "example": 3
+                    },
+                    "last_loaded": {
+                      "type": "string",
+                      "example": "2023-05-15 12:34:56"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Error retrieving model information"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 

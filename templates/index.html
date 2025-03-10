@@ -1,51 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Jurassic Classifier</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jurassic Classifier - AI-powered dinosaur species identification tool">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Jurassic Classifier | Dinosaur Species Identification</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jurassic+Park&family=Poppins:wght@400;600&display=swap">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
-    <div class="background-overlay"></div>
+    <div class="background-overlay" aria-hidden="true"></div>
     <div class="container">
         <header>
             <h1>Jurassic Classifier</h1>
             <p class="subtitle">Discover which dinosaur species you've found</p>
         </header>
 
-        <div class="card">
-            <div class="upload-container">
-                <div id="drop-zone" class="drop-zone">
-                    <div class="upload-icon">🦕</div>
-                    <p class="drop-text">Drag & Drop your dinosaur image here</p>
-                    <p class="or-text">- OR -</p>
-                    <input type="file" id="file-input" accept="image/*">
-                    <label for="file-input" class="upload-btn">Choose File</label>
+        <main>
+            <div class="card">
+                <div class="upload-container">
+                    <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Drop zone for dinosaur images">
+                        <div class="upload-icon" aria-hidden="true">🦕</div>
+                        <p class="drop-text">Drag & Drop your dinosaur image here</p>
+                        <p class="or-text">- OR -</p>
+                        <input type="file" id="file-input" accept="image/*" aria-label="Choose an image file">
+                        <label for="file-input" class="upload-btn">Choose File</label>
+                    </div>
+                    
+                    <div id="preview-container" class="preview-container hidden">
+                        <div class="preview-wrapper">
+                            <img id="preview-image" src="" alt="Preview">
+                            <button id="reset-btn" class="reset-btn" aria-label="Reset upload">×</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="predict-btn" class="predict-btn" disabled aria-label="Start identification process">
+                    <span class="btn-text">Identify Dinosaur</span>
+                    <span class="btn-icon" aria-hidden="true">🔍</span>
+                </button>
+
+                <div id="result" class="result hidden" aria-live="polite">
+                    <div class="result-content">
+                        <h2>Species Identified!</h2>
+                        <div class="prediction-box">
+                            <p id="prediction-text"></p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div id="preview-container" class="preview-container hidden">
-                    <div class="preview-wrapper">
-                        <img id="preview-image" src="" alt="Preview">
-                        <button id="reset-btn" class="reset-btn" aria-label="Reset">×</button>
-                    </div>
-                </div>
+                <div id="version-info" class="version-info" aria-label="Model version information"></div>
             </div>
-
-            <button id="predict-btn" class="predict-btn" disabled>
-                <span class="btn-text">Identify Dinosaur</span>
-                <span class="btn-icon">🔍</span>
-            </button>
-
-            <div id="result" class="result hidden">
-                <div class="result-content">
-                    <h2>Species Identified!</h2>
-                    <div class="prediction-box">
-                        <p id="prediction-text"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </main>
+        
+        <footer>
+            <p class="copyright">Made with 💚 by Peter Shamoun</p>
+        </footer>
     </div>
+    
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html> 
